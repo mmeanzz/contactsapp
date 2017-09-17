@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace ContactsApp
 {
@@ -11,6 +9,11 @@ namespace ContactsApp
         static void Main(string[] args)
         {
             List<Contact> danhba = new List<Contact>();
+
+            // doc du lieu tu file
+            if (File.Exists("contacts.txt"))
+                XuLyFile.LayDuLieuTuFile(danhba);
+
             char r;
             do
             {
@@ -40,6 +43,8 @@ namespace ContactsApp
                                  c.GetDiaChi(),
                                  c.GetSDT());
             }
+
+            XuLyFile.LuuDuLieuRaFile(danhba);
             Console.ReadLine();
         }
     }
